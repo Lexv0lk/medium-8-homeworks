@@ -14,7 +14,7 @@ namespace _1._3_DataProtection
             _maxWidth = (int)maxWidth;
         }
 
-        public void AddItem(string name, int count)
+        public void AddItem(string name, uint count)
         {
             int currentWidth = _items.Sum(item => item.Count);
             Item targetItem = _items.FirstOrDefault(item => item.Name == name);
@@ -25,7 +25,7 @@ namespace _1._3_DataProtection
             if (currentWidth + count > _maxWidth)
                 throw new InvalidOperationException();
 
-            targetItem.AddCount(count);
+            targetItem.AddCount((int)count);
         }
 
         public IReadOnlyCollection<Item> GetAllItems() => _items;
