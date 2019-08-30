@@ -13,7 +13,7 @@ namespace _1._1_Naming
         public User GetUser(string name) => _users.Where(x => x.Name == name).FirstOrDefault();
         public User GetUser(int id) => _users.Where(x => x.Id == id).FirstOrDefault();
 
-        public IEnumerable<User> GetAllUsers() => _users;
+        public IReadOnlyCollection<User> GetAllUsers() => _users;
 
         public IEnumerable<User> GetUsersWithHigherSalary(int salary) => _users.Where(x => x.Salary > salary);
         public IEnumerable<User> GetUsersWithLowerSalary(int salary) => _users.Where(x => x.Salary < salary);
