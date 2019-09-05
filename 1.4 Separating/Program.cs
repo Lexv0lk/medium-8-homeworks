@@ -22,9 +22,9 @@ namespace _1._4_Separating
 
     class Mover
     {
-        public float MovementDirectionX { get; private set; }
-        public float MovementDirectionY { get; private set; }
-        public float MovementSpeed { get; private set; }
+        public float DirectionX { get; private set; }
+        public float DirectionY { get; private set; }
+        public float Speed { get; private set; }
 
         public void Move()
         {
@@ -34,8 +34,8 @@ namespace _1._4_Separating
 
     class Weapon
     {
-        public float WeaponCooldown { get; private set; }
-        public int WeaponDamage { get; private set; }
+        public float Cooldown { get; private set; }
+        public int Damage { get; private set; }
 
         public void Attack()
         {
