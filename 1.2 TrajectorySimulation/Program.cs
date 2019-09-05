@@ -11,15 +11,15 @@ namespace _1._2_TrajectorySimulation
 
             while (true)
             {
-                DetectCollisions(currentObjects.ToArray());
-                MoveObjects(currentObjects.ToArray());
-                RenderObjects(currentObjects.ToArray());
+                DetectCollisions(currentObjects);
+                MoveObjects(currentObjects);
+                RenderObjects(currentObjects);
             }
         }
 
-        private static void RenderObjects(Object[] objects)
+        private static void RenderObjects(List<Object> objects)
         {
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < objects.Count; i++)
             {
                 if (objects[i].IsDead)
                     continue;
@@ -29,22 +29,26 @@ namespace _1._2_TrajectorySimulation
             }
         }
 
-        private static void MoveObjects(Object[] objects)
+        private static void MoveObjects(List<Object> objects)
         {
             Random random = new Random();
 
             foreach (var obj in objects)
+            {
+                if (obj.IsDead)
+                    continue;
                 obj.Move(random.Next(-1, 1), random.Next(-1, 1));
+            }
         }
 
-        private static void DetectCollisions(Object[] objects)
+        private static void DetectCollisions(List<Object> objects)
         {
-            for (int i = 0; i < objects.Length; i++)
+            for (int i = 0; i < objects.Count; i++)
             {
                 if (objects[i].IsDead)
                     continue;
 
-                for (int j = 0; j < objects.Length; j++)
+                for (int j = 0; j < objects.Count; j++)
                 {
                     if (j == i || objects[j].IsDead)
                         continue;
