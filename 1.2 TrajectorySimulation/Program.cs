@@ -9,6 +9,9 @@ namespace _1._2_TrajectorySimulation
         {
             List<Object> currentObjects = new List<Object>(new[] { new Object(5, 5), new Object(10, 10), new Object(15, 15) });
 
+            foreach (var obj in currentObjects)
+                obj.OnDead += () => currentObjects.Remove(obj);
+
             while (true)
             {
                 DetectCollisions(currentObjects);
@@ -21,9 +24,6 @@ namespace _1._2_TrajectorySimulation
         {
             for (int i = 0; i < objects.Count; i++)
             {
-                if (objects[i].IsDead)
-                    continue;
-
                 Console.SetCursorPosition(objects[i].X, objects[i].Y);
                 Console.Write(i + 1);
             }
@@ -35,8 +35,6 @@ namespace _1._2_TrajectorySimulation
 
             foreach (var obj in objects)
             {
-                if (obj.IsDead)
-                    continue;
                 obj.Move(random.Next(-1, 1), random.Next(-1, 1));
             }
         }
@@ -72,6 +70,8 @@ namespace _1._2_TrajectorySimulation
         public int X { get; private set; }
         public int Y { get; private set; }
 
+        public event Action OnDead;
+
         private bool _isAlive = true;
 
         public Object(int x, int y)
@@ -95,6 +95,10 @@ namespace _1._2_TrajectorySimulation
                 Y = 0;
         }
 
-        public void Kill() => _isAlive = false;
+        public void Kill()
+        {
+            _isAlive = false;
+            OnDead?.Invoke();
+        }
     }
 }
