@@ -1,0 +1,7 @@
+G:\Medium projects\2.3 Elements\bin\Debug\2.3 Elements.exe.config
+G:\Medium projects\2.3 Elements\bin\Debug\2.3 Elements.exe
+G:\Medium projects\2.3 Elements\bin\Debug\2.3 Elements.pdb
+G:\Medium projects\2.3 Elements\obj\Debug\2.3 Elements.csprojAssemblyReference.cache
+G:\Medium projects\2.3 Elements\obj\Debug\2.3 Elements.csproj.CoreCompileInputs.cache
+G:\Medium projects\2.3 Elements\obj\Debug\2.3 Elements.exe
+G:\Medium projects\2.3 Elements\obj\Debug\2.3 Elements.pdb
