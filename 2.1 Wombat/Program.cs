@@ -6,7 +6,7 @@ abstract class Character
 
     public void TakeDamage(int damage)
     {
-        Health = ProcessDamage(damage);
+        Health -= ProcessDamage(damage);
 
         if (Health <= 0)
             Console.WriteLine("Я умер");
