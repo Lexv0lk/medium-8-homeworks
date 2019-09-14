@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace _3._2_Search
 {
@@ -7,7 +8,7 @@ namespace _3._2_Search
         static void Main(string[] args)
         {
             List<Product> products = new List<Product>() { new Product("Пирожок", 35, 4), new Product("Булочка", 20, 1), new Product("Пицца", 500, 8), new Product("Бублик", 50, 7) };
-            Product targetProduct = products.Find(product => product.Price < 100 && product.Count > 6);
+            List<Product> targetProduct = products.Where(product => product.Price < 100 && product.Count > 6).ToList();
         }
     }
 
