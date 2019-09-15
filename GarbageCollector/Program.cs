@@ -14,10 +14,7 @@ class Program
 
         GC.Collect();
 
-        while (true)
-        {
-
-        }
+        Console.ReadKey();
     }
 }
 
@@ -52,5 +49,13 @@ class BigData
 
     }
 
-    public void DescribeAll() => SomeGlobalClass.Instance.OnSomething -= EventHandler;
+    public void DescribeAll()
+    {
+        SomeGlobalClass.Instance.OnSomething -= EventHandler;
+    }
+
+    ~BigData()
+    {
+        Console.WriteLine("я удален");
+    }
 }
