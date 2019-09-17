@@ -3,18 +3,18 @@ using System.Linq;
 
 namespace _2._2_Rallback
 {
-    class CountsUI
+    class BalancesUI
     {
-        private CountsDatabase _database;
+        private BalancesDatabase _database;
 
-        public CountsUI(CountsDatabase database)
+        public BalancesUI(BalancesDatabase database)
         {
             _database = database;
         }
 
         public void Display(int x, int y)
         {
-            Count[] counts = _database.GetAll().ToArray();
+            Balance[] counts = _database.GetAll().ToArray();
             for (int i = 0; i < counts.Length; i++)
             {
                 Console.SetCursorPosition(x, y + i);

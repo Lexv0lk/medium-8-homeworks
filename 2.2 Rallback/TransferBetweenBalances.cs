@@ -4,17 +4,17 @@ using System.Threading;
 
 namespace _2._2_Rallback
 {
-    class TransferBetweenCounts : IAction
+    class TransferBetweenBalances : IAction
     {
-        private CountsDatabase _database;
-        private CountsUI _UI;
+        private BalancesDatabase _database;
+        private BalancesUI _UI;
 
         private Stack<Transfer> _transfers = new Stack<Transfer>();
 
-        public TransferBetweenCounts(CountsDatabase database)
+        public TransferBetweenBalances(BalancesDatabase database)
         {
             _database = database;
-            _UI = new CountsUI(_database);
+            _UI = new BalancesUI(_database);
         }
 
         public void Execute()
@@ -40,8 +40,8 @@ namespace _2._2_Rallback
                 return;
             }
 
-            Count sender = _database.Get(senderId);
-            Count receiver = _database.Get(receiverId);
+            Balance sender = _database.Get(senderId);
+            Balance receiver = _database.Get(receiverId);
             Transfer transfer = new Transfer(sender, receiver, value);
             sender.Distruct(value);
             receiver.Add(value);
@@ -73,11 +73,11 @@ namespace _2._2_Rallback
 
     class Transfer
     {
-        public readonly Count Sender;
-        public readonly Count Receiver;
+        public readonly Balance Sender;
+        public readonly Balance Receiver;
         public readonly int Value;
 
-        public Transfer(Count sender, Count receiver, int value)
+        public Transfer(Balance sender, Balance receiver, int value)
         {
             Sender = sender;
             Receiver = receiver;

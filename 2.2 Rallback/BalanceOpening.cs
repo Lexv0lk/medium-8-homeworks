@@ -4,12 +4,12 @@ using System.Threading;
 
 namespace _2._2_Rallback
 {
-    class CountOpening : IAction
+    class BalanceOpening : IAction
     {
-        private CountsDatabase _database;
-        private Stack<Count> _createdCounts = new Stack<Count>();
+        private BalancesDatabase _database;
+        private Stack<Balance> _createdBalances = new Stack<Balance>();
 
-        public CountOpening(CountsDatabase database)
+        public BalanceOpening(BalancesDatabase database)
         {
             _database = database;
         }
@@ -20,9 +20,9 @@ namespace _2._2_Rallback
             Console.Write("Введите начальную сумму счета: ");
 
             int value = int.Parse(Console.ReadLine());
-            Count newCount = new Count(value);
+            Balance newCount = new Balance(value);
             _database.Add(newCount);
-            _createdCounts.Push(newCount);
+            _createdBalances.Push(newCount);
 
             Console.Clear();
             Console.WriteLine("Счёт " + newCount.Id + " c суммой " + newCount.Value + " успешно открыт");
@@ -31,10 +31,10 @@ namespace _2._2_Rallback
 
         public void Undo()
         {
-            if (_createdCounts.Count == 0)
+            if (_createdBalances.Count == 0)
                 return;
 
-            long lastCountId = _createdCounts.Pop().Id;
+            long lastCountId = _createdBalances.Pop().Id;
             _database.Remove(lastCountId);
         }
     }

@@ -43,17 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandsStack.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="Count.cs" />
-    <Compile Include="CountClosing.cs" />
-    <Compile Include="CountsDatabase.cs" />
-    <Compile Include="CountOpening.cs" />
-    <Compile Include="CountsUI.cs" />
+    <Compile Include="ActionsStack.cs" />
+    <Compile Include="InputCommand.cs" />
+    <Compile Include="Balance.cs" />
+    <Compile Include="BalanceClosing.cs" />
+    <Compile Include="BalancesDatabase.cs" />
+    <Compile Include="BalanceOpening.cs" />
+    <Compile Include="BalancesUI.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransferBetweenCounts.cs" />
+    <Compile Include="TransferBetweenBalances.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

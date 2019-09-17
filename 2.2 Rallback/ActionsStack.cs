@@ -2,17 +2,17 @@
 
 namespace _2._2_Rallback
 {
-    class CommandsStack
+    class ActionsStack
     {
         private Stack<IAction> _lastActions = new Stack<IAction>();
 
-        public void Execute(Command command)
+        public void Execute(IAction action)
         {
-            _lastActions.Push(command.Action);
-            command.Action.Execute();
+            _lastActions.Push(action);
+            action.Execute();
         }
 
-        public void UndoLastCommand()
+        public void UndoLastAction()
         {
             if (_lastActions.Count == 0)
                 return;

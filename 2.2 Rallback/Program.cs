@@ -4,14 +4,14 @@ namespace _2._2_Rallback
 {
     class Program
     {
-        private static CountsDatabase _countDatabase = new CountsDatabase();
-        private static CommandsStack _commandsStack = new CommandsStack();
+        private static BalancesDatabase _balancesDatabase = new BalancesDatabase();
+        private static ActionsStack _actionsStack = new ActionsStack();
 
         private static void Main(string[] args)
         {
-            Command[] commands = new[] { new Command("Открыть счёт", new CountOpening(_countDatabase)), new Command("Закрыть счёт", new CountClosing(_countDatabase)),
-            new Command("Перевести деньги", new TransferBetweenCounts(_countDatabase))};
-            CountsUI UI = new CountsUI(_countDatabase);
+            InputCommand[] commands = new[] { new InputCommand("Открыть счёт", new BalanceOpening(_balancesDatabase)), new InputCommand("Закрыть счёт", new BalanceClosing(_balancesDatabase)),
+            new InputCommand("Перевести деньги", new TransferBetweenBalances(_balancesDatabase))};
+            BalancesUI UI = new BalancesUI(_balancesDatabase);
 
             while(true)
             {
@@ -30,12 +30,12 @@ namespace _2._2_Rallback
             return Console.ReadLine();
         }
 
-        private static void ProcessCommands(Command[] commands, string commandName)
+        private static void ProcessCommands(InputCommand[] commands, string commandName)
         {
             commandName = commandName.ToLower();
             if(commandName == "undo")
             {
-                _commandsStack.UndoLastCommand();
+                _actionsStack.UndoLastAction();
                 return;
             }
 
@@ -43,7 +43,7 @@ namespace _2._2_Rallback
             {
                 if(command.Name.ToLower() == commandName)
                 {
-                    _commandsStack.Execute(command);
+                    _actionsStack.Execute(command.Action);
                     break;
                 }
             }

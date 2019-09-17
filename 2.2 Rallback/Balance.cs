@@ -2,14 +2,14 @@
 
 namespace _2._2_Rallback
 {
-    class Count
+    class Balance
     {
         public readonly long Id;
         public int Value { get; private set; }
 
         private static long _currentId = 1;
 
-        public Count(int value)
+        public Balance(int value)
         {
             Value = value;
             Id = _currentId++;

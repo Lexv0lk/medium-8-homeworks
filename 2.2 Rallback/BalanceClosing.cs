@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace _2._2_Rallback
 {
-    class CountClosing : IAction
+    class BalanceClosing : IAction
     {
-        private CountsDatabase _database;
-        private CountsUI _UI;
+        private BalancesDatabase _database;
+        private BalancesUI _UI;
 
-        private Stack<Count> _closedCounts = new Stack<Count>();
+        private Stack<Balance> _closedCounts = new Stack<Balance>();
 
-        public CountClosing(CountsDatabase database)
+        public BalanceClosing(BalancesDatabase database)
         {
             _database = database;
-            _UI = new CountsUI(_database);
+            _UI = new BalancesUI(_database);
         }
 
         public void Execute()
@@ -33,7 +30,7 @@ namespace _2._2_Rallback
 
             if (_database.IsCountExists(id))
             {
-                Count closedCount = _database.Get(id);
+                Balance closedCount = _database.Get(id);
                 _database.Remove(id);
                 _closedCounts.Push(closedCount);
                 Console.WriteLine("Счёт " + closedCount.Id + " c суммой " + closedCount.Value + " успешно закрыт");
@@ -46,7 +43,7 @@ namespace _2._2_Rallback
 
         public void Undo()
         {
-            Count lastClosedCount = _closedCounts.Pop();
+            Balance lastClosedCount = _closedCounts.Pop();
             _database.Add(lastClosedCount);
         }
     }
