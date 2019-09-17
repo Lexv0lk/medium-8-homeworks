@@ -29,7 +29,7 @@ namespace _2._4_ProductWithDiscount
             Price = price;
         }
 
-        public DiscountedProduct AddDiscount(int percents)
+        public IProduct AddDiscount(int percents)
         {
             if (percents < 0 || percents > 100)
                 throw new ArgumentOutOfRangeException(nameof(percents));
