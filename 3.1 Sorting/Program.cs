@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 namespace _3._1_Sorting
 {
-    class GoodsList
+    class Goods
     {
         private List<Good> _goods = new List<Good>();
 
-        public GoodsList(List<Good> goods)
+        public Goods(List<Good> goods)
         {
             _goods = goods;
         }
