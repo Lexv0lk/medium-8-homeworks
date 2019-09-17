@@ -5,22 +5,29 @@ namespace _2._3_Elements
     class InputHandler
     {
         private Cursor _cursor;
-        private BuilderElementsList _builderElementsList;
+        private UIBuilder _UIBuilder;
         private UserAction[] _movingActions;
+        private UserAction[] _buildingActions;
 
-        public InputHandler(Cursor cursor, BuilderElementsList builderElementsList)
+        public InputHandler(Cursor cursor, UIBuilder UIBuilder)
         {
             _cursor = cursor;
+
             _movingActions = new[]
             {
                 new UserAction(ConsoleKey.W, () => _cursor.Move(0, -1)),
                 new UserAction(ConsoleKey.D, () => _cursor.Move(1, 0)),
                 new UserAction(ConsoleKey.S, () => _cursor.Move(0, 1)),
-                new UserAction(ConsoleKey.A, () => _cursor.Move(-1, 0)),
-                new UserAction(ConsoleKey.LeftArrow, () => _builderElementsList.Previous()),
-                new UserAction(ConsoleKey.RightArrow, () => _builderElementsList.Next())
+                new UserAction(ConsoleKey.A, () => _cursor.Move(-1, 0))
             };
-            _builderElementsList = builderElementsList;
+            _buildingActions = new[]
+            {
+                new UserAction(ConsoleKey.E, () => _UIBuilder.BuildButton(_cursor.X, _cursor.Y)),
+                new UserAction(ConsoleKey.R, () => _UIBuilder.BuildTextField(_cursor.X, _cursor.Y)),
+                new UserAction(ConsoleKey.T, () => _UIBuilder.BuildCheckBox(_cursor.X, _cursor.Y))
+            };
+
+            _UIBuilder = UIBuilder;
         }
 
         public void Handle(ConsoleKey key)
@@ -31,8 +38,21 @@ namespace _2._3_Elements
             if (TryToClickUI(key))
                 return;
 
-            if (key == ConsoleKey.Enter)
-                _builderElementsList.BuildCurrentElement(_cursor.X, _cursor.Y);
+            TryToBuildUI(key);
+        }
+
+        private bool TryToBuildUI(ConsoleKey key)
+        {
+            foreach (var buildingAction in _buildingActions)
+            {
+                if(key == buildingAction.Trigger)
+                {
+                    buildingAction.Execute();
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private bool TryToClickUI(ConsoleKey key)

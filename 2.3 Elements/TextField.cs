@@ -28,7 +28,7 @@ namespace _2._3_Elements
             int cursorX = Console.CursorLeft;
             int cursorY = Console.CursorTop;
             Console.CursorVisible = true;
-            Console.SetCursorPosition(Rect.X + 1, Rect.Y + 1);
+            Console.SetCursorPosition(X + 1, Y + 1);
 
             _text = GetElementName();
             _textRenderer.Text = _text;

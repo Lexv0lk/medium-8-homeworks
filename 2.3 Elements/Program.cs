@@ -9,9 +9,7 @@ namespace _2._3_Elements
             RectRenderer rectRenderer = new RectRenderer(new Rect(0, 0, Console.WindowWidth, 20), '#');
             Cursor cursor = new Cursor(rectRenderer.Rect);
             UIBuilder UIBuilder = new UIBuilder(new Rect(rectRenderer.Rect.X + 1, rectRenderer.Rect.Y + 1, rectRenderer.Rect.Width - 2, rectRenderer.Rect.Height - 2));
-            BuilderElementsList builderElementsList = new BuilderElementsList(UIBuilder);
-            builderElementsList.Show();
-            InputHandler inputHandler = new InputHandler(cursor, builderElementsList);
+            InputHandler inputHandler = new InputHandler(cursor, UIBuilder);
 
             WriteInfo();
             rectRenderer.Render();
@@ -26,7 +24,7 @@ namespace _2._3_Elements
         private static void WriteInfo()
         {
             Console.SetCursorPosition(Console.WindowWidth / 3, 22);
-            Console.WriteLine("Arrows - Down menu navigation");
+            Console.WriteLine("E - button, R - text field, T - checkbox");
             Console.SetCursorPosition(Console.WindowWidth / 3, 24);
             Console.Write("AWSD - Main window navigation");
         }

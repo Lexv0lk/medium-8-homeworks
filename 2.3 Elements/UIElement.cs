@@ -7,7 +7,7 @@ namespace _2._3_Elements
         public int Height
         {
             get => Rect.Height;
-            set
+            protected set
             {
                 new Rect(Rect.X, Rect.Y, Rect.Width, value);
                 _rectRenderer.Rect = Rect;
@@ -17,7 +17,7 @@ namespace _2._3_Elements
         public int Width
         {
             get => Rect.Width;
-            set
+            protected set
             {
                 Rect = new Rect(Rect.X, Rect.Y, value, Rect.Height);
                 _rectRenderer.Rect = Rect;
@@ -27,13 +27,13 @@ namespace _2._3_Elements
         public string Text
         {
             get => _textRenderer.Text;
-            set => _textRenderer.Text = value;
+            protected set => _textRenderer.Text = value;
         }
 
         public int X => Rect.X;
         public int Y => Rect.Y;
 
-        public Rect Rect { get; protected set; }
+        public Rect Rect { get; private set; }
         protected RectRenderer _rectRenderer;
         protected TextRenderer _textRenderer;
 

@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuilderElementsList.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="InputHandler.cs" />
