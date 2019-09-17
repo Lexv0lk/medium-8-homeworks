@@ -2,32 +2,46 @@
 
 namespace _2._4_ProductWithDiscount
 {
-    class Product
+    class DiscountedProduct : IProduct
     {
         public string Name { get; private set; }
-        public bool HasDiscount { get; private set; }
+        public float Price { get; private set; }
 
-        public bool CanBeDelivered => !HasDiscount;
+        public bool CanBeDelivered => false;
 
-        private float _price;
-        private int _discountPercents;
+        public DiscountedProduct(Product product, int discountPercents)
+        {
+            Name = product.Name;
+            Price = product.Price - product.Price * (discountPercents / 100f);
+        }
+    }
 
-        public float GetPrice() => _price;
-        public float GetPriceWithDiscount() => _price - _discountPercents / 100f * _price;
+    class Product : IProduct
+    {
+        public string Name { get; private set; }
+        public float Price { get; private set; }
 
-        public void SetDiscount(int percents)
+        public bool CanBeDelivered => true;
+
+        public Product(string name, float price)
+        {
+            Name = name;
+            Price = price;
+        }
+
+        public DiscountedProduct AddDiscount(int percents)
         {
             if (percents < 0 || percents > 100)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException(nameof(percents));
 
-            HasDiscount = true;
-            _discountPercents = percents;
+            return new DiscountedProduct(this, percents);
         }
+    }
 
-        public void RemoveDiscount()
-        {
-            HasDiscount = false;
-            _discountPercents = 0;
-        }
+    interface IProduct
+    {
+        string Name { get; }
+        float Price { get; }
+        bool CanBeDelivered { get; }
     }
 }
