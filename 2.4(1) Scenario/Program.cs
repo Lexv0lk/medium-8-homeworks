@@ -7,10 +7,10 @@ namespace _2._4_1__Scenario
     {
         static void Main(string[] args)
         {
-            ScenarioReader scenarioReader = new ScenarioReader("Scenario");
+            IScenarioReader scenarioReader = new FileReader("Scenario");
             while (true)
             {
-                if (scenarioReader.CanReadDirectory())
+                if (scenarioReader.CanRead())
                 {
                     foreach (var line in scenarioReader.ReadNext())
                         Console.WriteLine(line);

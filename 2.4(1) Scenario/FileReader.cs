@@ -3,7 +3,7 @@ using System.IO;
 
 namespace _2._4_1__Scenario
 {
-    class ScenarioReader
+    class FileReader : IScenarioReader
     {
         private string _directory;
         private DirectoryInfo _directoryInfo;
@@ -11,7 +11,7 @@ namespace _2._4_1__Scenario
         private FileInfo[] _lastFileInfos;
         private int _currentFileIndex;
 
-        public ScenarioReader(string directory)
+        public FileReader(string directory)
         {
             _directory = directory;
             _directoryInfo = new DirectoryInfo(_directory);
@@ -20,8 +20,8 @@ namespace _2._4_1__Scenario
 
         public string[] ReadNext()
         {
-            if (!CanReadDirectory())
-                return null;
+            if (!CanRead())
+                throw new FileNotFoundException();
 
             if (WereFilesChanged())
             {
@@ -38,7 +38,7 @@ namespace _2._4_1__Scenario
             return result;
         }
 
-        public bool CanReadDirectory() => GetFileInfos().Length != 0;
+        public bool CanRead() => GetFileInfos().Length != 0;
 
         private bool WereFilesChanged()
         {
