@@ -28,7 +28,7 @@ namespace _2._2_Rallback
             Console.Clear();
             _UI.Display(80, 0);
 
-            if (_database.IsCountExists(id))
+            if (_database.IsBalanceExists(id))
             {
                 Balance closedCount = _database.Get(id);
                 _database.Remove(id);

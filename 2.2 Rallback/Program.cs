@@ -9,8 +9,8 @@ namespace _2._2_Rallback
 
         private static void Main(string[] args)
         {
-            InputCommand[] commands = new[] { new InputCommand("Открыть счёт", new BalanceOpening(_balancesDatabase)), new InputCommand("Закрыть счёт", new BalanceClosing(_balancesDatabase)),
-            new InputCommand("Перевести деньги", new TransferBetweenBalances(_balancesDatabase))};
+            ExecutableCommand[] commands = new[] { new ExecutableCommand("Открыть счёт", new BalanceOpening(_balancesDatabase)), new ExecutableCommand("Закрыть счёт", new BalanceClosing(_balancesDatabase)),
+            new ExecutableCommand("Перевести деньги", new TransferBetweenBalances(_balancesDatabase))};
             BalancesUI UI = new BalancesUI(_balancesDatabase);
 
             while(true)
@@ -30,7 +30,7 @@ namespace _2._2_Rallback
             return Console.ReadLine();
         }
 
-        private static void ProcessCommands(InputCommand[] commands, string commandName)
+        private static void ProcessCommands(ExecutableCommand[] commands, string commandName)
         {
             commandName = commandName.ToLower();
             if(commandName == "undo")

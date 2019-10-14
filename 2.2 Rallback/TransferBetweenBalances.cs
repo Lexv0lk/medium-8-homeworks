@@ -55,8 +55,8 @@ namespace _2._2_Rallback
 
         private bool isTransferValid(long senderId, long receiverId, int value)
         {
-            return _database.IsCountExists(senderId)
-                && _database.IsCountExists(receiverId)
+            return _database.IsBalanceExists(senderId)
+                && _database.IsBalanceExists(receiverId)
                 && value <= _database.Get(senderId).Value;
         }
 

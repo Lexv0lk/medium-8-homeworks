@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionsStack.cs" />
-    <Compile Include="InputCommand.cs" />
+    <Compile Include="ExecutableCommand.cs" />
     <Compile Include="Balance.cs" />
     <Compile Include="BalanceClosing.cs" />
     <Compile Include="BalancesDatabase.cs" />
