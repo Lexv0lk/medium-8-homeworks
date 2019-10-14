@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.IO;
+using System.Collections.Generic;
 
 namespace _2._4_1__Scenario
 {
@@ -20,14 +21,8 @@ namespace _2._4_1__Scenario
 
         public string[] ReadNext()
         {
-            if (!CanRead())
+            if (CanRead() == false)
                 throw new FileNotFoundException();
-
-            if (WereFilesChanged())
-            {
-                _lastFileInfos = GetFileInfos();
-                _currentFileIndex = 0;
-            }
 
             string[] result = File.ReadAllLines(_lastFileInfos[_currentFileIndex].FullName);
 
@@ -40,22 +35,15 @@ namespace _2._4_1__Scenario
 
         public bool CanRead() => GetFileInfos().Length != 0;
 
-        private bool WereFilesChanged()
+        private FileInfo[] GetFileInfos()
         {
-            FileInfo[] newFilesInfos = GetFileInfos();
+            List<FileInfo> result = new List<FileInfo>();
 
-            if (_lastFileInfos.Length != newFilesInfos.Length)
-                return true;
+            foreach (var file in _directoryInfo.GetFiles())
+                if (file.Name.Any(symbol => char.IsDigit(symbol)))
+                    result.Add(file);
 
-            for (int i = 0; i < newFilesInfos.Length; i++)
-            {
-                if (_lastFileInfos[i].Name != newFilesInfos[i].Name)
-                    return true;
-            }
-
-            return false;
+            return result.ToArray();
         }
-
-        private FileInfo[] GetFileInfos() => _directoryInfo.GetFiles().Where(file => file.Name.Any(symbol => char.IsDigit(symbol))).ToArray();
     }
 }
