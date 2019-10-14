@@ -14,9 +14,6 @@ namespace _1._2_TrajectorySimulation
                 new Object(15, 15)
             };
 
-            foreach (var obj in objects)
-                obj.OnDead += () => objects.Remove(obj);
-
             while (true)
             {
                 DetectCollisions(objects);
@@ -46,23 +43,28 @@ namespace _1._2_TrajectorySimulation
 
         private static void DetectCollisions(List<Object> objects)
         {
+            List<Object> objectsToRemove = new List<Object>();
+
             for (int i = 0; i < objects.Count; i++)
             {
-                if (objects[i].IsDead)
+                if (objectsToRemove.Contains(objects[i]))
                     continue;
 
                 for (int j = 0; j < objects.Count; j++)
                 {
-                    if (j == i || objects[j].IsDead)
+                    if (j == i || objectsToRemove.Contains(objects[i]))
                         continue;
 
                     if (IsCollided(objects[i], objects[j]))
                     {
-                        objects[i].OnCollision();
-                        objects[j].OnCollision();
+                        objectsToRemove.Add(objects[i]);
+                        objectsToRemove.Add(objects[j]);
                     }
                 }
             }
+
+            foreach (var obj in objectsToRemove)
+                objects.Remove(obj);
         }
 
         private static bool IsCollided(Object object1, Object object2) => object1.X == object2.X && object1.Y == object2.Y;
@@ -70,14 +72,8 @@ namespace _1._2_TrajectorySimulation
 
     class Object
     {
-        public bool IsDead => !_isAlive;
-
         public int X { get; private set; }
         public int Y { get; private set; }
-
-        public event Action OnDead;
-
-        private bool _isAlive = true;
 
         public Object(int x, int y)
         {
@@ -87,9 +83,6 @@ namespace _1._2_TrajectorySimulation
 
         public void Move(int xDelta, int yDelta)
         {
-            if (IsDead)
-                return;
-
             X += xDelta;
             Y += yDelta;
 
@@ -98,12 +91,6 @@ namespace _1._2_TrajectorySimulation
 
             if (Y < 0)
                 Y = 0;
-        }
-
-        public void OnCollision()
-        {
-            _isAlive = false;
-            OnDead?.Invoke();
         }
     }
 }

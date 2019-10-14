@@ -5,3 +5,10 @@ G:\Medium projects\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.c
 G:\Medium projects\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.csproj.CoreCompileInputs.cache
 G:\Medium projects\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.exe
 G:\Medium projects\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.pdb
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\bin\Debug\1.2 TrajectorySimulation.exe.config
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\bin\Debug\1.2 TrajectorySimulation.exe
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\bin\Debug\1.2 TrajectorySimulation.pdb
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.csprojAssemblyReference.cache
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.csproj.CoreCompileInputs.cache
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.exe
+G:\Medium projects\GithubRepository\1.2 TrajectorySimulation\obj\Debug\1.2 TrajectorySimulation.pdb
