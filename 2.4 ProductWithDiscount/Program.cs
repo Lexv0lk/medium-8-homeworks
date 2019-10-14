@@ -2,7 +2,7 @@
 
 namespace _2._4_ProductWithDiscount
 {
-    class DiscountedProduct : IProduct
+    class DiscountedProduct
     {
         public string Name { get; private set; }
         public float Price { get; private set; }
@@ -16,7 +16,7 @@ namespace _2._4_ProductWithDiscount
         }
     }
 
-    class Product : IProduct
+    class Product
     {
         public string Name { get; private set; }
         public float Price { get; private set; }
@@ -29,19 +29,12 @@ namespace _2._4_ProductWithDiscount
             Price = price;
         }
 
-        public IProduct AddDiscount(int percents)
+        public DiscountedProduct AddDiscount(int percents)
         {
             if (percents < 0 || percents > 100)
                 throw new ArgumentOutOfRangeException(nameof(percents));
 
             return new DiscountedProduct(this, percents);
         }
-    }
-
-    interface IProduct
-    {
-        string Name { get; }
-        float Price { get; }
-        bool CanBeDelivered { get; }
     }
 }
