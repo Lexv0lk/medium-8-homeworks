@@ -20,9 +20,7 @@ namespace _3._1_Sorting
             return _goods[index];
         }
 
-        public void SortByNames(Comparison<string> comparison) => _goods.Sort((x, y) => comparison(x.Name, y.Name));
-        public void SortByPrice(Comparison<int> comparison) => _goods.Sort((x, y) => comparison(x.Price, y.Price));
-        public void SortByLevel(Comparison<int> comparison) => _goods.Sort((x, y) => comparison(x.Level, y.Level));
+        public void Sort(Comparison<Good> comparison) => _goods.Sort(comparison);
     }
 
     class Good
