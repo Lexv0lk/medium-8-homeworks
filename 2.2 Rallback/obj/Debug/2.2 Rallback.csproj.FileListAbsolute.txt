@@ -1,0 +1,7 @@
+G:\Medium projects\2.2 Rallback\bin\Debug\2.2 Rallback.exe.config
+G:\Medium projects\2.2 Rallback\bin\Debug\2.2 Rallback.exe
+G:\Medium projects\2.2 Rallback\bin\Debug\2.2 Rallback.pdb
+G:\Medium projects\2.2 Rallback\obj\Debug\2.2 Rallback.csprojAssemblyReference.cache
+G:\Medium projects\2.2 Rallback\obj\Debug\2.2 Rallback.csproj.CoreCompileInputs.cache
+G:\Medium projects\2.2 Rallback\obj\Debug\2.2 Rallback.exe
+G:\Medium projects\2.2 Rallback\obj\Debug\2.2 Rallback.pdb
